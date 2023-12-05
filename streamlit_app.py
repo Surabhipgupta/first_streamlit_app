@@ -57,7 +57,25 @@ except URLError as e:
 #my_cur.execute("Use ROLE ACCOUNTADMIN")
 #my_cur.execute("Use schema PC_RIVERY_DB.PUBLIC")
 #my_cur.execute("select * from fruit_load_list")
-streamlit.header("The fruit loadlist contains:")
+#streamlit.header("The fruit loadlist contains:")
+#Snowflake related functions
+#def get_fruit_load_list():
+    with my_cnx.cursor() as my_cur:
+        my_cur.execute("Use warehouse PC_RIVERY_WH")
+        my_cur.execute("Use ROLE ACCOUNTADMIN")
+        my_cur.execute("Use schema PC_RIVERY_DB.PUBLIC")
+        my_cur.execute("select * from fruit_load_list")
+        return my_cur.fetchall()
+
+#Add a button to load the fruit
+#if streamlit.button('Get Fruit Load List'):
+    my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+    my_data_rows = get_fruit_load_list()
+    my_cnx.close()
+    streamlit.dataframe(my_data_rows)
+    
+#Add View Our fruit List - Add your favourites!
+streamlit.header("Add View Our fruit List - Add your favourites!")
 #Snowflake related functions
 def get_fruit_load_list():
     with my_cnx.cursor() as my_cur:
@@ -68,9 +86,9 @@ def get_fruit_load_list():
         return my_cur.fetchall()
 
 #Add a button to load the fruit
-if streamlit.button('Get Fruit Load List'):
+if streamlit.button('Get Fruit List'):
     my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
-    my_data_rows = get_fruit_load_list()
+    my_data_rows = get_fruit_list()
     my_cnx.close()
     streamlit.dataframe(my_data_rows)
 
