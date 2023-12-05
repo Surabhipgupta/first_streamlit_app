@@ -87,7 +87,7 @@ def insert_row_snowflake(new_fruit):
         my_cur.execute("Use ROLE ACCOUNTADMIN")
         my_cur.execute("Use schema PC_RIVERY_DB.PUBLIC")
         my_cur.execute("select * from fruit_load_list")
-        my_cur.execute("insert into fruit_load_list values ('"jackfruit + papaya + guava + kiwi"')")
+        my_cur.execute("insert into fruit_load_list values ('"jackfruit" + "papaya" + "guava" + "kiwi"')")
         return "Thanks for adding " + new_fruit
 
 
