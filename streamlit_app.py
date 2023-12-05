@@ -83,6 +83,10 @@ if streamlit.button('Get Fruit Load List'):
 #Allow the end user to allow fruit to the list
 def insert_row_snowflake(new_fruit):
     with my_cnx.cursor() as my_cur:
+        my_cur.execute("Use warehouse PC_RIVERY_WH")
+        my_cur.execute("Use ROLE ACCOUNTADMIN")
+        my_cur.execute("Use schema PC_RIVERY_DB.PUBLIC")
+        my_cur.execute("select * from fruit_load_list")
         my_cur.execute("insert into fruit_load_list values ('"jackfruit + papaya + guava + kiwi"')");
         return "Thanks for adding " + new_fruit
 
