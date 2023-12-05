@@ -60,12 +60,12 @@ except URLError as e:
 #streamlit.header("The fruit loadlist contains:")
 #Snowflake related functions
 #def get_fruit_load_list():
-    with my_cnx.cursor() as my_cur:
+    #with my_cnx.cursor() as my_cur:
         my_cur.execute("Use warehouse PC_RIVERY_WH")
         my_cur.execute("Use ROLE ACCOUNTADMIN")
         my_cur.execute("Use schema PC_RIVERY_DB.PUBLIC")
         my_cur.execute("select * from fruit_load_list")
-        return my_cur.fetchall()
+        #return my_cur.fetchall()
 
 #Add a button to load the fruit
 #if streamlit.button('Get Fruit Load List'):
