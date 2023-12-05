@@ -74,7 +74,7 @@ except URLError as e:
     #my_cnx.close()
     #streamlit.dataframe(my_data_rows)
     
-#Add View Our fruit List - Add your favourites!
+#View Our fruit List - Add your favourites!
 streamlit.header("View Our fruit List - Add your favourites!")
 #Snowflake related functions
 def get_fruit_load_list():
